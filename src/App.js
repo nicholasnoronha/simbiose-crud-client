@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import API from './services/API'
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [ users, setUsers ] = useState([])
+  useEffect(() => {
+    const getUsers = async () => {
+      const response = await API.get('/pessoas')
+      setUsers(response)
+    }
+    getUsers()
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
     </div>
   );
 }
