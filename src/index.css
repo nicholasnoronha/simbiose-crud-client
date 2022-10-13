@@ -61,6 +61,38 @@ button {
   font-size: 1.1rem
 }
 
+.insert-person-button {
+  background-color: #407899;
+  border-radius: 7px;
+  padding: 0.5rem;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.new-person-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.new-person-form label {
+  font-weight: 600;
+  padding-bottom: 1%;
+  align-self: start;
+}
+
+.new-person-form input {
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: 5%;
+  border: 1px solid gray;
+  border-radius: 2px;
+  padding: .1rem .3rem;
+}
+
 @media (min-width: 768px) {
   .modal {
     width: 40rem;
