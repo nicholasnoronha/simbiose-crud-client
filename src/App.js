@@ -1,21 +1,27 @@
-import API from './services/API'
-import { useEffect, useState } from 'react';
-import Container from './components/Container';
+import API from "./services/API";
+import { useEffect, useState } from "react";
+
+import Container from "./components/Container";
+import Table from "./components/Table";
 
 function App() {
-  const [ users, setUsers ] = useState([])
+  const [users, setUsers] = useState([]);
+
   useEffect(() => {
     const getUsers = async () => {
-      const response = await API.get('/pessoas')
-      setUsers(response)
-    }
-    getUsers()
-  }, [])
+      const response = await API.get("/pessoas");
+      setUsers(response.data);
+    };
+    getUsers();
+  }, []);
+
   return (
     <div>
-      <h1>Pessoas Cadastradas</h1>
+      <div className="space-between">
+        <h1>Pessoas Cadastradas</h1>
+      </div>
       <Container>
-        <span>Oi</span>
+        <Table users={users} />
       </Container>
     </div>
   );
