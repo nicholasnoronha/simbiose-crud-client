@@ -1,18 +1,36 @@
 import Modal from "./Modal";
 import { useState } from "react";
-import API from "../services/API";
+import API, { addUser } from "../services/API";
 
 const PersonForm = (props) => {
   const [pessoa, setPessoa] = useState({
-    nome: "",
-    email: "",
-    dataNascimento: "",
+    id: props.userToEdit?.id || "",
+    nome: props.userToEdit?.nome || "",
+    email: props.userToEdit?.email || "",
+    data_nascimento: props.userToEdit?.data_nascimento || "",
   });
 
-  const addPessoaHandler = async (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const resp = await API.post("/pessoa", pessoa);
-    console.log("resp", resp);
+
+    if (!props.userToEdit) {
+      return await addPersonHandler();
+    }
+
+    //todo updateUser
+  };
+
+  const addPersonHandler = async () => {
+    const response = await addUser(pessoa);
+
+    if (!response) return;
+
+    const { data } = response;
+
+    const { insertId: userId } = data;
+
+    props.setUsers((prev) => [...prev, pessoa]);
+    props.onClose();
   };
 
   const changeNomeHandler = (event) => {
@@ -36,7 +54,7 @@ const PersonForm = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      <form className="new-person-form" onSubmit={addPessoaHandler}>
+      <form className="new-person-form" onSubmit={handleFormSubmit}>
         <label htmlFor="nome">Nome: </label>
         <input
           name="nome"
@@ -44,7 +62,7 @@ const PersonForm = (props) => {
           id="text"
           onChange={changeNomeHandler}
           value={pessoa.nome}
-        ></input>
+        />
         <label htmlFor="email">Email: </label>
         <input
           name="email"
@@ -52,7 +70,7 @@ const PersonForm = (props) => {
           id="email"
           onChange={changeEmailHandler}
           value={pessoa.email}
-        ></input>
+        />
         <label htmlFor="data_nascimento">Data de nascimento: </label>
         <input
           name="data_nascimento"
@@ -60,8 +78,8 @@ const PersonForm = (props) => {
           id="data_nascimento"
           onChange={changeDataNascimentoHandler}
           value={pessoa.data_nascimento}
-        ></input>
-        <button>{props.formAction}</button>
+        />
+        <button>{props.userToEdit ? "Atualizar" : "Cadastrar"}</button>
       </form>
     </Modal>
   );

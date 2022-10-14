@@ -1,4 +1,4 @@
-import API from "./services/API";
+import API, { fetchUsers } from "./services/API";
 import { useEffect, useState } from "react";
 
 import Container from "./components/Container";
@@ -8,37 +8,56 @@ import PersonForm from "./components/PersonForm";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [userToEdit, setUserToEdit] = useState(null);
 
   useEffect(() => {
     const getUsers = async () => {
-      const response = await API.get("/pessoas");
-      setUsers(response.data);
+      const response = await fetchUsers();
+
+      if (!response) return;
+
+      const { data } = response;
+
+      if (!data.length) return;
+
+      setUsers(data);
     };
+
     getUsers();
   }, []);
 
-  function openModalHandler() {
-    setOpenModal(true);
-  }
+  const handleUserToEdit = (userData) => {
+    setUserToEdit(userData);
+    setShowModal(true);
+  };
 
-  function closeModalHandler() {
-    setOpenModal(false);
-  }
+  const handleModalVisibility = () => {
+    setUserToEdit(null);
+    setShowModal((prev) => !prev);
+  };
 
   return (
     <div>
       <div className="space-between">
         <h1>Pessoas Cadastradas</h1>
-        <Button className="insert-person-button" onClick={openModalHandler}>
+        <Button
+          className="insert-person-button"
+          onClick={handleModalVisibility}
+        >
           Cadastrar pessoa
         </Button>
-        {openModal && (
-          <PersonForm onClose={closeModalHandler} formAction="Cadastrar" />
+        {showModal && (
+          <PersonForm
+            onClose={handleModalVisibility}
+            formAction="Cadastrar"
+            setUsers={setUsers}
+            userToEdit={userToEdit}
+          />
         )}
       </div>
       <Container>
-        <Table users={users} />
+        <Table users={users} addUserToEdit={handleUserToEdit} />
       </Container>
     </div>
   );
