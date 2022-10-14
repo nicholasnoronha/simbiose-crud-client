@@ -11,8 +11,8 @@ const Table = (props) => {
   };
 
   const handleDelete = async (id) => {
-    props.setUsers((users) => users.filter((user) => user.id !== id));
     await deleteUser(id);
+    props.setUsers((users) => users.filter((user) => user.id !== id));
   };
 
   const mappedThs = (
