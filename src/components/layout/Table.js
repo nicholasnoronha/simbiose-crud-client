@@ -1,7 +1,7 @@
-import Button from "./Button";
+import Button from "../UI/Button";
 import { FiTrash2, FiEdit } from "react-icons/fi";
-import { deleteUser } from "../services/API";
-import "../styles/table.css";
+import { deleteUser } from "../../services/API";
+import "../../styles/table.css";
 import moment from "moment";
 
 const Table = (props) => {

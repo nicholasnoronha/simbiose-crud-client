@@ -1,9 +1,9 @@
 import { fetchUsers } from "./services/API";
 import { useEffect, useState } from "react";
 
-import Container from "./components/Container";
-import Table from "./components/Table";
-import Button from "./components/Button";
+import Container from "./components/UI/Container";
+import Table from "./components/layout/Table";
+import Button from "./components/UI/Button";
 import PersonForm from "./components/PersonForm";
 
 function App() {

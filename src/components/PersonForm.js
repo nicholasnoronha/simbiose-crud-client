@@ -1,5 +1,5 @@
-import Modal from "./Modal";
 import { useState } from "react";
+import { Input, Modal, Button } from "../components";
 import { addUser, updateUser } from "../services/API";
 
 const PersonForm = (props) => {
@@ -66,31 +66,33 @@ const PersonForm = (props) => {
   return (
     <Modal onClose={props.onClose}>
       <form className="new-person-form" onSubmit={handleFormSubmit}>
-        <label htmlFor="nome">Nome: </label>
-        <input
+        <Input
+          label="Nome"
           name="nome"
           type="text"
-          id="text"
+          id="nome"
           onChange={changeNomeHandler}
           value={pessoa.nome}
         />
-        <label htmlFor="email">Email: </label>
-        <input
+        <Input
+          label="Email"
           name="email"
           type="email"
           id="email"
           onChange={changeEmailHandler}
           value={pessoa.email}
         />
-        <label htmlFor="data_nascimento">Data de nascimento: </label>
-        <input
+        <Input
+          label="Data de nascimento"
           name="data_nascimento"
           type="date"
           id="data_nascimento"
           onChange={changeDataNascimentoHandler}
           value={pessoa.data_nascimento}
         />
-        <button>{props.userToEdit ? "Atualizar" : "Cadastrar"}</button>
+        <Button type="submit">
+          {props.userToEdit ? "Atualizar" : "Cadastrar"}
+        </Button>
       </form>
     </Modal>
   );
