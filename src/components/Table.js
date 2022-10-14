@@ -2,16 +2,11 @@ import Button from "./Button";
 import { FiTrash2, FiEdit } from "react-icons/fi";
 import { deleteUser } from "../services/API";
 import "../styles/table.css";
+import moment from "moment";
 
 const Table = (props) => {
   const handleEdit = (user) => {
-    const dateArray = user.data_nascimento.split("/");
-    let month = dateArray[1];
-    let day = dateArray[0];
-    dateArray[1] = month.length < 2 ? `0${month}` : month;
-    dateArray[0] = day.length < 2 ? `0${day}` : day;
-    const formattedDate = dateArray.reverse().join("-");
-
+    const formattedDate = user.data_nascimento.split("/").reverse().join("-");
     props.addUserToEdit({ ...user, data_nascimento: formattedDate });
   };
 
@@ -30,23 +25,17 @@ const Table = (props) => {
   );
 
   const mappedTrs = props.users.map((user) => {
-    const date = new Date(user.data_nascimento);
-    const month = String(date.getMonth() + 1);
-    const formattedMonth = month.length < 2 ? `0${month}` : month;
-    const birthdayDate = `${date.getDate()}/${formattedMonth}/${date.getFullYear()}`;
-
+    const date = moment(user.data_nascimento).format("DD/MM/YYYY");
     return (
       <tr key={user.id}>
         <td>{user.nome}</td>
         <td>{user.email}</td>
-        <td>{birthdayDate}</td>
+        <td>{date}</td>
         <td>
           <Button>
             <FiEdit
               className="button-icon"
-              onClick={() =>
-                handleEdit({ ...user, data_nascimento: birthdayDate })
-              }
+              onClick={() => handleEdit({ ...user, data_nascimento: date })}
             />
           </Button>
           <Button>
