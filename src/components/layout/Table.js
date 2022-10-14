@@ -1,20 +1,8 @@
-import Button from "../UI/Button";
-import { FiTrash2, FiEdit } from "react-icons/fi";
-import { deleteUser } from "../../services/API";
+import { RowActions } from "../../components";
 import "../../styles/table.css";
 import moment from "moment";
 
 const Table = (props) => {
-  const handleEdit = (user) => {
-    const formattedDate = user.data_nascimento.split("/").reverse().join("-");
-    props.addUserToEdit({ ...user, data_nascimento: formattedDate });
-  };
-
-  const handleDelete = async (id) => {
-    await deleteUser(id);
-    props.setUsers((users) => users.filter((user) => user.id !== id));
-  };
-
   const mappedThs = (
     <tr>
       <th>Nome</th>
@@ -31,20 +19,11 @@ const Table = (props) => {
         <td>{user.nome}</td>
         <td>{user.email}</td>
         <td>{date}</td>
-        <td>
-          <Button>
-            <FiEdit
-              className="button-icon"
-              onClick={() => handleEdit({ ...user, data_nascimento: date })}
-            />
-          </Button>
-          <Button>
-            <FiTrash2
-              className="button-icon"
-              onClick={() => handleDelete(user.id)}
-            />
-          </Button>
-        </td>
+        <RowActions
+          addUserToEdit={props.addUserToEdit}
+          setUsers={props.setUsers}
+          user={{ ...user, data_nascimento: date }}
+        />
       </tr>
     );
   });
