@@ -1,6 +1,6 @@
 import Modal from "./Modal";
 import { useState } from "react";
-import API, { addUser } from "../services/API";
+import { addUser, updateUser } from "../services/API";
 
 const PersonForm = (props) => {
   const [pessoa, setPessoa] = useState({
@@ -17,7 +17,7 @@ const PersonForm = (props) => {
       return await addPersonHandler();
     }
 
-    //todo updateUser
+    return await editPersonHandler();
   };
 
   const addPersonHandler = async () => {
@@ -30,6 +30,17 @@ const PersonForm = (props) => {
     const { insertId: userId } = data;
 
     props.setUsers((prev) => [...prev, pessoa]);
+    props.onClose();
+  };
+
+  const editPersonHandler = async () => {
+    const response = await updateUser(pessoa);
+    if (!response) return;
+
+    props.setUsers((users) => {
+      const filteredUsers = users.filter((user) => user.id !== pessoa.id);
+      return [...filteredUsers, pessoa];
+    });
     props.onClose();
   };
 

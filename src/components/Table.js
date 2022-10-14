@@ -4,9 +4,15 @@ import { deleteUser } from "../services/API";
 import "../styles/table.css";
 
 const Table = (props) => {
-  const handleEdit = (id, nome, email, birthdayDate) => {
-    const userData = { id, nome, email, data_nascimento: birthdayDate };
-    props.addUserToEdit(userData);
+  const handleEdit = (user) => {
+    const dateArray = user.data_nascimento.split("/");
+    let month = dateArray[1];
+    let day = dateArray[0];
+    dateArray[1] = month.length < 2 ? `0${month}` : month;
+    dateArray[0] = day.length < 2 ? `0${day}` : day;
+    const formattedDate = dateArray.reverse().join("-");
+
+    props.addUserToEdit({ ...user, data_nascimento: formattedDate });
   };
 
   const handleDelete = async (id) => {
@@ -39,7 +45,7 @@ const Table = (props) => {
             <FiEdit
               className="button-icon"
               onClick={() =>
-                handleEdit(user.id, user.nome, user.email, birthdayDate)
+                handleEdit({ ...user, data_nascimento: birthdayDate })
               }
             />
           </Button>

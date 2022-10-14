@@ -50,7 +50,6 @@ function App() {
         {showModal && (
           <PersonForm
             onClose={handleModalVisibility}
-            formAction="Cadastrar"
             setUsers={setUsers}
             userToEdit={userToEdit}
           />
