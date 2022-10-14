@@ -8,4 +8,6 @@ export const fetchUsers = async () => await API.get("/pessoas");
 
 export const addUser = async (payload) => await API.post("/pessoa", payload);
 
+export const deleteUser = async (id) => await API.delete(`/pessoa/${id}`);
+
 export default API;

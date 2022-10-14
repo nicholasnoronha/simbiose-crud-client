@@ -1,11 +1,17 @@
 import Button from "./Button";
 import { FiTrash2, FiEdit } from "react-icons/fi";
+import { deleteUser } from "../services/API";
 import "../styles/table.css";
 
 const Table = (props) => {
   const handleEdit = (id, nome, email, birthdayDate) => {
     const userData = { id, nome, email, data_nascimento: birthdayDate };
     props.addUserToEdit(userData);
+  };
+
+  const handleDelete = async (id) => {
+    props.setUsers((users) => users.filter((user) => user.id !== id));
+    await deleteUser(id);
   };
 
   const mappedThs = (
@@ -38,7 +44,10 @@ const Table = (props) => {
             />
           </Button>
           <Button>
-            <FiTrash2 className="button-icon" />
+            <FiTrash2
+              className="button-icon"
+              onClick={() => handleDelete(user.id)}
+            />
           </Button>
         </td>
       </tr>

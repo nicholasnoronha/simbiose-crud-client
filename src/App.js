@@ -1,4 +1,4 @@
-import API, { fetchUsers } from "./services/API";
+import { fetchUsers } from "./services/API";
 import { useEffect, useState } from "react";
 
 import Container from "./components/Container";
@@ -57,7 +57,11 @@ function App() {
         )}
       </div>
       <Container>
-        <Table users={users} addUserToEdit={handleUserToEdit} />
+        <Table
+          users={users}
+          addUserToEdit={handleUserToEdit}
+          setUsers={setUsers}
+        />
       </Container>
     </div>
   );
