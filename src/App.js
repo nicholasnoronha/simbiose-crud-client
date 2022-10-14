@@ -41,10 +41,7 @@ function App() {
     <div>
       <div className="space-between">
         <h1>Pessoas Cadastradas</h1>
-        <Button
-          className="insert-person-button"
-          onClick={handleModalVisibility}
-        >
+        <Button className="new-person_button" onClick={handleModalVisibility}>
           Cadastrar pessoa
         </Button>
         {showModal && (

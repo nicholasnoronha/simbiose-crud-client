@@ -1,7 +1,8 @@
 const Button = (props) => {
+  const classes = `${props.className || ""}`;
   return (
     <button
-      className={props.className || ""}
+      className={classes}
       onClick={props.onClick}
       type={props.type || "button"}
     >

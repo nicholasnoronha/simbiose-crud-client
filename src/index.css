@@ -1,96 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+html {
+  --blue: #407899;
+  --black: black;
+  --white: white;
+  --grey: #999;
+  --open-sans: "Open Sans", sans-serif
+} 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: var(--open-sans);
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 2rem 20%;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+button, input {
+  background: none;
+  border: none;
+}
+button {
+  cursor: pointer;
+}
+input:focus {
+  outline: none;
+}
+input::placeholder {
+  color: var(--grey)
+}
+.button-icon {
+  font-size: 1.1rem
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.input_label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.input {
+  border: 1px solid var(--grey);
+  border-radius: 7px;
+  padding: 0.3rem .5rem;
+}
+.container, .backdrop {
+  width: 100%
+}
+.modal, .backdrop {
+  position: fixed;
+}
+.content, .space-between {
+  display: flex;
+  align-items: center;
+}
 .container {
-  width: 100%;
   box-shadow: 3px 3px 10px rgba(0,0,0,0.25%);
 }
-
+.content {
+  justify-content: center;
+}
+.space-between {
+  justify-content: space-between;
+}
+.new-person_button {
+  background-color: var(--blue);
+  border-radius: 7px;
+  padding: 0.5rem;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1rem;
+}
+.new-person_form {
+  width: 60%;
+}
+.new-person_form > .form-group {
+  margin-bottom: 1rem;
+}
+.new-person-form_button {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 0.6rem 1rem;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  float: right;
+}
 .backdrop {
-  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100vh;
   z-index: 20;
   background-color: rgba(0,0,0,0.7);
 }
-
 .modal {
-  position: fixed;
   top: 20vh;
-  background-color: white;
+  background-color: var(--white);
   padding: 1rem;
   border-radius: 14px;
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
-  color: black;
-}
-
-.content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.space-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.button-icon {
-  font-size: 1.1rem
-}
-
-.insert-person-button {
-  background-color: #407899;
-  border-radius: 7px;
-  padding: 0.5rem;
-  color: white;
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.new-person-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-}
-
-.new-person-form label {
-  font-weight: 600;
-  padding-bottom: 1%;
-  align-self: start;
-}
-
-.new-person-form input {
-  width: 100%;
-  font-size: 1rem;
-  margin-bottom: 5%;
-  border: 1px solid gray;
-  border-radius: 2px;
-  padding: .1rem .3rem;
+  color: var(--black);
 }
 
 @media (min-width: 768px) {

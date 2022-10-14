@@ -65,7 +65,8 @@ const PersonForm = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      <form className="new-person-form" onSubmit={handleFormSubmit}>
+      <form className="new-person_form" onSubmit={handleFormSubmit}>
+        <h2 className="modal_title">Cadastrar pessoa</h2>
         <Input
           label="Nome"
           name="nome"
@@ -73,6 +74,7 @@ const PersonForm = (props) => {
           id="nome"
           onChange={changeNomeHandler}
           value={pessoa.nome}
+          placeholder="Exemplo"
         />
         <Input
           label="Email"
@@ -81,6 +83,7 @@ const PersonForm = (props) => {
           id="email"
           onChange={changeEmailHandler}
           value={pessoa.email}
+          placeholder="exemplo@exemplo.com"
         />
         <Input
           label="Data de nascimento"
@@ -90,7 +93,7 @@ const PersonForm = (props) => {
           onChange={changeDataNascimentoHandler}
           value={pessoa.data_nascimento}
         />
-        <Button type="submit">
+        <Button className="new-person-form_button" type="submit">
           {props.userToEdit ? "Atualizar" : "Cadastrar"}
         </Button>
       </form>

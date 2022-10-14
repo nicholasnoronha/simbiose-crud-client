@@ -1,16 +1,20 @@
 const Input = (props) => {
+  const classes = `input ${props.className || ""}`;
   return (
-    <>
-      <label htmlFor={props.id}>{props.label}</label>
+    <div className="form-group">
+      <label className="input_label" htmlFor={props.id}>
+        {props.label}
+      </label>
       <input
         id={props.id}
         name={props.name}
-        className={props.className || ""}
+        className={classes}
         onChange={props.onChange}
         value={props.value}
+        placeholder={props.placeholder}
         type={props.type || "text"}
       />
-    </>
+    </div>
   );
 };
 
