@@ -59,11 +59,6 @@ input::placeholder {
   display: flex;
   align-items: center;
 }
-.container {
-  /* box-shadow: 1px 1px 10px var(--grey); */
-  /* border-radius: 7px; */
-  /* background-color: white; */
-}
 .content {
   justify-content: center;
 }
