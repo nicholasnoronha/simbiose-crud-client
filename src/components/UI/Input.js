@@ -13,6 +13,7 @@ const Input = (props) => {
         value={props.value}
         placeholder={props.placeholder}
         type={props.type || "text"}
+        required
       />
     </div>
   );

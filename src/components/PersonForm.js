@@ -24,14 +24,13 @@ const PersonForm = (props) => {
 
   const addPersonHandler = async () => {
     const response = await addUser(pessoa);
-
     if (!response) return;
 
     const { data } = response;
 
     const { insertId: userId } = data;
 
-    props.setUsers((prev) => [...prev, pessoa]);
+    props.setUsers((prev) => [...prev, { ...pessoa, id: userId }]);
     props.onClose();
   };
 
