@@ -1,4 +1,4 @@
-import { Button } from "../components";
+import { Button } from ".";
 import { deleteUser } from "../services/API";
 import { FiTrash2, FiEdit } from "react-icons/fi";
 

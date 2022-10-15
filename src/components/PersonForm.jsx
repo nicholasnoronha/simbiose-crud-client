@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input, Modal, Button } from "../components";
+import { Input, Modal, Button } from ".";
 import { addUser, updateUser } from "../services/API";
 import { BsPlusSquare } from "react-icons/bs";
 import { MdOutlineSystemUpdateAlt } from "react-icons/md";

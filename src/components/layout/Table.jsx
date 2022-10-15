@@ -1,4 +1,4 @@
-import { RowActions } from "../../components";
+import { RowActions } from "..";
 import "../../styles/table.css";
 import moment from "moment";
 
