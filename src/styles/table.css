@@ -18,11 +18,11 @@ th, td {
 }
 
 thead tr {
-    background-color: #407899;
-    color: white;
+    background-color: var(--blue);
+    color: var(--white);
     border-radius: 7px;
 }
 
 tbody tr {
-    border-bottom: 1px solid rgba(0,0,0,0.2)
+    border-bottom: 1px solid var(--grey);
 }

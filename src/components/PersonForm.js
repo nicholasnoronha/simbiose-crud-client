@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Input, Modal, Button } from "../components";
 import { addUser, updateUser } from "../services/API";
+import { BsPlusSquare } from "react-icons/bs";
+import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 
 const PersonForm = (props) => {
   const [pessoa, setPessoa] = useState({
@@ -63,10 +65,25 @@ const PersonForm = (props) => {
     });
   };
 
+  const title = props.userToEdit ? "Atualizar" : "Cadastrar";
+
+  const handleSubmitButton =
+    title === "Atualizar" ? (
+      <Button type="submit" className="new-person-form_button">
+        <MdOutlineSystemUpdateAlt className="new-person_button-icon" />
+        Atualizar
+      </Button>
+    ) : (
+      <Button type="submit" className="new-person-form_button">
+        <BsPlusSquare className="new-person_button-icon" />
+        Cadastrar
+      </Button>
+    );
+
   return (
     <Modal onClose={props.onClose}>
       <form className="new-person_form" onSubmit={handleFormSubmit}>
-        <h2 className="modal_title">Cadastrar pessoa</h2>
+        <h2 className="title">{title} pessoa</h2>
         <Input
           label="Nome"
           name="nome"
@@ -93,9 +110,7 @@ const PersonForm = (props) => {
           onChange={changeDataNascimentoHandler}
           value={pessoa.data_nascimento}
         />
-        <Button className="new-person-form_button" type="submit">
-          {props.userToEdit ? "Atualizar" : "Cadastrar"}
-        </Button>
+        {handleSubmitButton}
       </form>
     </Modal>
   );

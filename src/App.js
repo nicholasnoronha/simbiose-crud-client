@@ -1,6 +1,6 @@
 import { fetchUsers } from "./services/API";
 import { useEffect, useState } from "react";
-
+import { BsPlusSquare } from "react-icons/bs";
 import Container from "./components/UI/Container";
 import Table from "./components/layout/Table";
 import Button from "./components/UI/Button";
@@ -38,11 +38,11 @@ function App() {
   };
 
   return (
-    <div>
+    <Container>
       <div className="space-between">
-        <h1>Pessoas Cadastradas</h1>
+        <h1 className="title">Pessoas Cadastradas</h1>
         <Button className="new-person_button" onClick={handleModalVisibility}>
-          Cadastrar pessoa
+          <BsPlusSquare className="new-person_button-icon" /> Cadastrar pessoa
         </Button>
         {showModal && (
           <PersonForm
@@ -52,14 +52,12 @@ function App() {
           />
         )}
       </div>
-      <Container>
-        <Table
-          users={users}
-          addUserToEdit={handleUserToEdit}
-          setUsers={setUsers}
-        />
-      </Container>
-    </div>
+      <Table
+        users={users}
+        addUserToEdit={handleUserToEdit}
+        setUsers={setUsers}
+      />
+    </Container>
   );
 }
 

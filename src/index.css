@@ -1,20 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 html {
-  --blue: #407899;
-  --black: black;
-  --white: white;
-  --grey: #999;
+  --blue: #006989;
+  --black: #342E37;
+  --white: #f8f8f8;
+  --grey: #E5E5E5;
   --open-sans: "Open Sans", sans-serif
 } 
 body {
   margin: 0;
   font-family: var(--open-sans);
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 2rem 20%;
+  color: var(--black);
+  background-color: var(--white);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -23,6 +22,7 @@ code {
 button, input {
   background: none;
   border: none;
+  color: var(--black);
 }
 button {
   cursor: pointer;
@@ -45,9 +45,9 @@ input::placeholder {
   opacity: 0.8;
 }
 .input {
-  border: 1px solid var(--grey);
+  box-shadow: 1px 1px 5px var(--grey);
   border-radius: 7px;
-  padding: 0.3rem .5rem;
+  padding: 0.5rem;
 }
 .container, .backdrop {
   width: 100%
@@ -60,7 +60,10 @@ input::placeholder {
   align-items: center;
 }
 .container {
-  box-shadow: 3px 3px 10px rgba(0,0,0,0.25%);
+  box-shadow: 1px 1px 10px var(--grey);
+  padding: 2rem;
+  border-radius: 7px;
+  background-color: white;
 }
 .content {
   justify-content: center;
@@ -69,11 +72,13 @@ input::placeholder {
   justify-content: space-between;
 }
 .new-person_button {
+  display: flex;
+  align-items: center;
   background-color: var(--blue);
   border-radius: 7px;
   padding: 0.5rem;
   color: var(--white);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1rem;
 }
 .new-person_form {
@@ -83,12 +88,19 @@ input::placeholder {
   margin-bottom: 1rem;
 }
 .new-person-form_button {
+  display: flex;
+  align-items: center;
   background-color: var(--blue);
   color: var(--white);
   padding: 0.6rem 1rem;
   border-radius: 7px;
   font-size: 0.9rem;
   float: right;
+}
+.new-person_button-icon {
+  color: var(--white);
+  font-size: .8rem;
+  margin-right: .2rem
 }
 .backdrop {
   top: 0;
@@ -105,6 +117,10 @@ input::placeholder {
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
   color: var(--black);
+}
+.title {
+  font-weight: 300;
+  margin: .8rem 0 ;
 }
 
 @media (min-width: 768px) {
