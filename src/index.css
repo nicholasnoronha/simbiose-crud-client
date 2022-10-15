@@ -11,7 +11,7 @@ body {
   font-family: var(--open-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 2rem 20%;
+  padding: 2rem 10%;
   color: var(--black);
   background-color: var(--white);
 }
@@ -60,10 +60,9 @@ input::placeholder {
   align-items: center;
 }
 .container {
-  box-shadow: 1px 1px 10px var(--grey);
-  padding: 2rem;
-  border-radius: 7px;
-  background-color: white;
+  /* box-shadow: 1px 1px 10px var(--grey); */
+  /* border-radius: 7px; */
+  /* background-color: white; */
 }
 .content {
   justify-content: center;
@@ -97,7 +96,7 @@ input::placeholder {
   font-size: 0.9rem;
   float: right;
 }
-.new-person_button-icon {
+.new-person_button-icon, .new-person_form_button-icon {
   color: var(--white);
   font-size: .8rem;
   margin-right: .2rem
@@ -112,11 +111,13 @@ input::placeholder {
 .modal {
   top: 20vh;
   background-color: var(--white);
-  padding: 1rem;
+  padding: 1rem 0;
   border-radius: 14px;
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
   color: var(--black);
+  width: 80%;
+  max-width: 40rem;
 }
 .title {
   font-weight: 300;
@@ -125,8 +126,16 @@ input::placeholder {
 
 @media (min-width: 768px) {
   .modal {
-    width: 40rem;
     left: calc(50% - 20rem)
+  }
+}
+@media screen and (max-width: 600px) {
+  .new-person_button-text {
+    display: none;
+  }
+  .new-person_button-icon {
+    font-size: 1.2rem;
+    margin: 0;
   }
 }
 

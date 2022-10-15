@@ -26,3 +26,34 @@ thead tr {
 tbody tr {
     border-bottom: 1px solid var(--grey);
 }
+
+@media screen and (max-width: 600px) {
+    thead {
+        display: none;
+    }
+    td {
+        display: block;
+        border-bottom: 1px solid var(--grey);
+        text-align: end;
+    }
+    td:first-child {
+        background-color: var(--blue);
+        color: var(--white);
+        border: none;
+        border-radius: 7px;
+        text-align: center;
+    }
+    td:nth-child(2)::before {
+        content: "E-mail"
+    }
+    td:nth-child(3)::before {
+        content: "Data de Nasc."
+    }
+    td:nth-child(4)::before {
+        content: "Ações"
+    }
+    td::before {
+        float: left;
+        font-weight: 500;
+    }
+}

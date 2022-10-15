@@ -70,12 +70,12 @@ const PersonForm = (props) => {
   const handleSubmitButton =
     title === "Atualizar" ? (
       <Button type="submit" className="new-person-form_button">
-        <MdOutlineSystemUpdateAlt className="new-person_button-icon" />
+        <MdOutlineSystemUpdateAlt className="new-person_form_button-icon" />
         Atualizar
       </Button>
     ) : (
       <Button type="submit" className="new-person-form_button">
-        <BsPlusSquare className="new-person_button-icon" />
+        <BsPlusSquare className="new-person_form_button-icon" />
         Cadastrar
       </Button>
     );

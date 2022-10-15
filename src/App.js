@@ -42,7 +42,8 @@ function App() {
       <div className="space-between">
         <h1 className="title">Pessoas Cadastradas</h1>
         <Button className="new-person_button" onClick={handleModalVisibility}>
-          <BsPlusSquare className="new-person_button-icon" /> Cadastrar pessoa
+          <BsPlusSquare className="new-person_button-icon" />{" "}
+          <span className="new-person_button-text">Cadastrar pessoa</span>
         </Button>
         {showModal && (
           <PersonForm
