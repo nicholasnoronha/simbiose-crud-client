@@ -2,23 +2,29 @@ import { fetchUsers } from "./services/API";
 import { useEffect, useState } from "react";
 import { BsPlusSquare } from "react-icons/bs";
 import { Button, Table, PersonForm, Container, Footer } from "./components";
+import Loading from "./components/layout/Loading";
 
 function App() {
   const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [userToEdit, setUserToEdit] = useState(null);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const getUsers = async () => {
-      const response = await fetchUsers();
-
-      if (!response) return;
-
-      const { data } = response;
-
-      if (!data.length) return;
-
-      setUsers(data);
+      try {
+        const response = await fetchUsers();
+  
+        if (!response) return;
+  
+        const { data } = response;
+  
+        if (!data.length) return;
+  
+        setUsers(data);
+      } finally {
+        setLoading(false)
+      }
     };
 
     getUsers();
@@ -33,6 +39,8 @@ function App() {
     setUserToEdit(null);
     setShowModal((prev) => !prev);
   };
+
+  if (loading) return <Loading />
 
   return (
     <>
