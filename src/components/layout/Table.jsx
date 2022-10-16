@@ -3,13 +3,9 @@ import "../../styles/table.css";
 import moment from "moment";
 
 const Table = (props) => {
-  const sortByName = () => {
-    props.setUsers(prev => prev.sort())
-  }
-
   const mappedThs = (
     <tr>
-      <th onClick={sortByName} style={{cursor: "pointer"}}>Nome</th>
+      <th>Nome</th>
       <th>Email</th>
       <th>Data Nascimento</th>
       <th>Ações</th>

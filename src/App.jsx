@@ -20,7 +20,6 @@ function App() {
         const { data } = response;
   
         if (!data.length) return;
-  
         setUsers(data);
       } finally {
         setLoading(false)

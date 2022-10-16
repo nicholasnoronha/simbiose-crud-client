@@ -40,7 +40,9 @@ const PersonForm = (props) => {
 
     props.setUsers((users) => {
       const filteredUsers = users.filter((user) => user.id !== pessoa.id);
-      return [...filteredUsers, pessoa];
+      const newUsersList = [...filteredUsers, pessoa]
+      const usersSortedById = newUsersList.sort((a, b) => a.id - b.id)
+      return usersSortedById;
     });
     props.onClose();
   };
