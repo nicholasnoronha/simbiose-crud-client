@@ -159,6 +159,9 @@ footer p {
     font-size: 1.2rem;
     margin: 0;
   }
+  .new-person_actions-container > button {
+    padding: 0.5rem;
+  }
 }
 
 @keyframes slide-down {
