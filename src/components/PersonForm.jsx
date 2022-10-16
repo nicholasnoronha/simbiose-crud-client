@@ -109,7 +109,7 @@ const PersonForm = (props) => {
           onChange={changeDataNascimentoHandler}
           value={pessoa.data_nascimento}
         />
-        <div className="new-person_actions-container">
+        <div className="modal_actions-container">
         <Button onClick={props.onClose} className="cancel-button">Cancelar</Button>
         {handleSubmitButton}
         </div>

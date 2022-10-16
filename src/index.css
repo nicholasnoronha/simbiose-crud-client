@@ -42,7 +42,7 @@ input::placeholder {
 .button-icon {
   font-size: 1.1rem
 }
-.new-person_actions-container {
+.modal_actions-container {
   margin-top: 2rem;
 }
 .cancel-button, .new-person_button {
@@ -53,6 +53,7 @@ input::placeholder {
   background-color: var(--grey);
   padding: 0.6rem 1.5rem;
   font-size: 0.9rem;
+  margin-right: 1rem;
 }
 .new-person_button {
   padding: 0.5rem;
@@ -73,34 +74,37 @@ input::placeholder {
 .modal, .backdrop {
   position: fixed;
 }
-.content, .space-between, .new-person-form_button, .form-group, .new-person_actions-container {
+.content, .space-between, .new-person-form_button, .delete-person-form_button, .form-group, .modal_actions-container {
   display: flex;
 }
 .content {
   justify-content: center;
 }
-.space-between, .new-person_actions-container  {
+.space-between  {
   justify-content: space-between;
 }
-.content, .space-between, .new-person_actions-container, .new-person-form_button  {
+.modal_actions-container {
+  float: right;
+}
+.content, .space-between, .modal_actions-container, .new-person-form_button, .delete-person-form_button  {
   align-items: center;
 }
 .form-group {
   flex-direction: column;
 }
-.new-person_form {
+.new-person_form, .delete-person_form {
   width: 60%;
 }
 .new-person_form > .form-group {
   margin-bottom: 1rem;
 }
-.new-person-form_button, .new-person_button, .new-person_button-icon, .new-person_form_button-icon, .footer-icon, footer {
+.new-person-form_button, .delete-person-form_button, .new-person_button, .new-person_button-icon, .new-person_form_button-icon, .footer-icon, footer {
   color: var(--white)
 }
-footer, .new-person-form_button, .new-person_button {
+footer, .new-person-form_button, .delete-person-form_button, .new-person_button {
   background-color: var(--blue)
 }
-.new-person-form_button {
+.new-person-form_button, .delete-person-form_button {
   padding: 0.6rem 1rem;
   border-radius: 7px;
   font-size: 0.9rem;
@@ -145,6 +149,10 @@ footer p {
   margin-left: 1rem;
   font-size: 1.2rem;
 }
+.delete-person_subtitle {
+  opacity: 0.8;
+  font-size: 0.8rem;
+}
 
 @media (min-width: 768px) {
   .modal {
@@ -159,7 +167,7 @@ footer p {
     font-size: 1.2rem;
     margin: 0;
   }
-  .new-person_actions-container > button {
+  .modal_actions-container > button {
     padding: 0.5rem;
   }
 }
