@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://simbiose-crud-server.herokuapp.com",
 });
 
 export const fetchUsers = async () => await API.get("/pessoas");
