@@ -1,3 +1,5 @@
+## <img src="https://github.com/nicholasnoronha/simbiose-crud-client/blob/master/public/simbiose-crud-client.png">
+
 # Tecnologies
 This project was created utilizing:
 
